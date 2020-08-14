@@ -1,4 +1,5 @@
 import numpy as np
+import argparse
 
 def preprocess(image):
     image = image[35:195:2, ::2, 0]
@@ -6,6 +7,13 @@ def preprocess(image):
     image[image != 0] = 1
     return image.astype(np.float)
 
+def choose_mode(v):
+    if v.lower() in ('Train','train'):
+        return 'Train'
+    elif v.lower() in ('Test','test'):
+        return 'Test'
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
 
 def discounted_rewards(rew, gamma=0.99):
     d_r = np.zeros_like(rew)
