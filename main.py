@@ -1,15 +1,18 @@
+import argparse
 import keras
 from keras.layers import Dense, Flatten
 import gym
 import numpy as np
+import time
 import utils
 import model
 import warnings
 
 warnings.filterwarnings("ignore") # Ignores all warning messages
+keras.backend.set_image_data_format('channels_last')
 
 def train_agent():
-    render = False
+    render = True
     lr = 0.1
     states = []
     action_probs = []
@@ -69,7 +72,32 @@ def train_agent():
             reward_sum = 0
             observation = env.reset()
 
+def test_agent():
+    env = gym.make("Pong-v0")
+    observation = env.reset()
+    previous_observation = utils.preprocess(observation)
+    agent = model.build_dqn_model()
+
+    while True:
+        env.render()
+        current_observation = utils.preprocess(observation)
+        state = current_observation - previous_observation
+        previous_observation = current_observation
+        action_prob = agent.predict_on_batch(state.reshape(1, 80, 80, 1))[0,:]
+        action = np.random.choice(6, p=action_prob)
+        observation, reward, done, _ = env.step(action)
+        time.sleep(1/60)  
+        if done:
+            observation = env.reset()
+
 def main():
-    train_agent()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--mode", type=utils.choose_mode, nargs='?',const=True,help="Train from scratch or Test Pre-Trained Agent")
+    args = parser.parse_args()
+    mode = args.mode
+    if mode == 'Train':
+        train_agent()
+    else:
+        test_agent()
 
 main()
