@@ -1,6 +1,6 @@
 import keras
 from keras.layers import Dense, Flatten
-from os.path import isfile
+import os
 
 def build_dqn_model():
     model = keras.models.Sequential()
@@ -9,6 +9,6 @@ def build_dqn_model():
     model.add(Dense(6, activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam')
     model.summary()
-    if isfile('Pong_agent'):
+    if os.path.isfile('Pong_agent'):
         model.load_weights('Pong_agent')
     return model
