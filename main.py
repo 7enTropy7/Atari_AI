@@ -1,3 +1,4 @@
+from tensorflow.python.client import device_lib
 import argparse
 import keras
 from keras.layers import Dense, Flatten
@@ -8,11 +9,13 @@ import utils
 import model
 import warnings
 
+print(device_lib.list_local_devices())
 warnings.filterwarnings("ignore") # Ignores all warning messages
 keras.backend.set_image_data_format('channels_last')
 
 def train_agent():
     render = True
+    # render = False
     lr = 0.1
     states = []
     action_probs = []
