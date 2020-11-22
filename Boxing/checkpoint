@@ -1,0 +1,2 @@
+model_checkpoint_path: "Boxing_agent"
+all_model_checkpoint_paths: "Boxing_agent"
