@@ -1,0 +1,2 @@
+model_checkpoint_path: "Pacman_agent"
+all_model_checkpoint_paths: "Pacman_agent"
