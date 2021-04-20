@@ -26,11 +26,9 @@ $ python3 main.py --mode Test
 
 ## Demonstration
 
-The right green paddle is being controlled by the DQN Agent whereas the left brown paddle is a hard-coded agent which simply moves based on the y-coordinate of the ball. Note that this took around 4 hours to train on Nvidia 1660-Ti GPU.
+These took around 4 hours to train on Nvidia 1660-Ti GPU.
 
-![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/36446402/113911218-58f37a80-97f7-11eb-98bb-d5792da49205.gif)
-
-![ezgif com-video-to-gif](https://user-images.githubusercontent.com/36446402/90346383-071e9a00-e046-11ea-80cf-378fc923bea1.gif)
+![portfolio-19](https://user-images.githubusercontent.com/36446402/115430001-9a395080-a221-11eb-92c1-0ecc6d45befc.gif) ![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/36446402/113911218-58f37a80-97f7-11eb-98bb-d5792da49205.gif) ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/36446402/90346383-071e9a00-e046-11ea-80cf-378fc923bea1.gif)
 
 ## Author
 * [**Unnikrishnan Menon**](https://github.com/7enTropy7)
